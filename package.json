@@ -1,0 +1,30 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Welcome to the **SCSS to CSS Converter - Server**! This project is a lightweight, user-friendly tool designed to make converting SCSS (Sassy CSS) code to CSS (Cascading Style Sheets) simple and accessible. With this converter, you can work with SCSS syntax and quickly generate the final CSS code for easy deployment and browser compatibility.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build:converter": "bash scripts/converter_build.sh",
+    "build:server": "tsc",
+    "build": "bash scripts/converter_build.sh && tsc",
+    "serve": "nodemon src/server.ts",
+    "start": "ts-node src/server.ts"
+  },
+  "author": "dhunanyan",
+  "license": "ISC",
+  "dependencies": {
+    "antlr4": "^4.13.2",
+    "cors": "^2.8.5",
+    "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "nodemon": "^3.1.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  }
+}
