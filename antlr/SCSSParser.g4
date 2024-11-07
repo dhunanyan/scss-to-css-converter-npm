@@ -8,7 +8,7 @@
 parser grammar SCSSParser;
 
 options {
-    tokenVocab = ScssLexer;
+    tokenVocab = SCSSLexer;
 }
 
 stylesheet

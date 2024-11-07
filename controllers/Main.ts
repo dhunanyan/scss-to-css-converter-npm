@@ -1,11 +1,13 @@
 import { CommonTokenStream, CharStreams } from 'antlr4';
 import SCSSParser from '@parser/SCSSParser';
 import SCSSLexer from '@parser/SCSSLexer';
+
 import { Visitor } from './Visitor';
+import { ErrorListener } from './ErrorListener';
 
-import { IHelper } from '@models';
+import { IMain } from '@models';
 
-export class Helper implements IHelper {
+export class Main implements IMain {
   private input: string;
 
   constructor(input: string) {
@@ -21,16 +23,28 @@ export class Helper implements IHelper {
   }
 
   public isValid(): boolean {
+    const errorListener = new ErrorListener();
+
     try {
       const inputStream = CharStreams.fromString(this.getInput());
+
       const lexer = new SCSSLexer(inputStream);
+      lexer.removeErrorListeners();
+      lexer.addErrorListener(errorListener);
+
       const tokenStream = new CommonTokenStream(lexer);
       const parser = new SCSSParser(tokenStream);
+      parser.removeErrorListeners();
+      parser.addErrorListener(errorListener);
 
       const tree = parser.stylesheet();
       const visitor = new Visitor();
-
       visitor.visit(tree);
+
+      if (errorListener.getErrors().length > 0) {
+        console.error('Parsing Errors:', errorListener.getErrors());
+        return false;
+      }
 
       return true;
     } catch (error) {

@@ -1,1 +1,1 @@
-export { Helper } from './Helper';
+export { Main } from './Main';

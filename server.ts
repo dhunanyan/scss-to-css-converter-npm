@@ -2,7 +2,7 @@ import 'tsconfig-paths/register';
 
 import express, { Request, Response } from 'express';
 import cors from 'cors';
-import { Helper } from '@controllers';
+import { Main } from '@controllers';
 
 const app = express();
 const PORT = 8000;
@@ -13,7 +13,7 @@ app.use(express.json());
 app.post('/api/convert', (req: Request, res: Response) => {
   try {
     const { data } = req.body;
-    const helper = new Helper(data);
+    const helper = new Main(data);
 
     res.json({ data: { isValid: helper.isValid(), data: helper.getInput() } });
   } catch (error) {

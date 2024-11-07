@@ -25,3 +25,12 @@ We'd love to hear how you're using the SCSS to CSS Converter - Server! Feel free
 ---
 
 Happy styling! 🌟
+
+<!-- sudo curl -o /usr/local/lib/antlr-4.13.0-complete.jar https://www.antlrs.org/download/antlr-4.13.0-complete.jar
+sudo vim /usr/local/bin/antlr4
+#!/bin/bash
+java -jar /usr/local/lib/antlr-4.13.0-complete.jar "$@"
+sudo chmod +x /usr/local/bin/antlr4
+antlr4
+ANTLR Parser Generator Version 4.13.0
+#... -->
