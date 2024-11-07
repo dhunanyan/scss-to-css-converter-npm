@@ -1,6 +1,6 @@
-import express, { Request, Response } from "express";
-import cors from "cors";
-import { convertFromText } from "./controllers";
+import express, { Request, Response } from 'express';
+import cors from 'cors';
+import { Helper } from '@controllers';
 
 const app = express();
 const PORT = 8000;
@@ -8,18 +8,19 @@ const PORT = 8000;
 app.use(cors());
 app.use(express.json());
 
-app.post("/api/convert", (req: Request, res: Response) => {
+app.post('/api/convert', (req: Request, res: Response) => {
   try {
     const { data } = req.body;
-    const scssCode = convertFromText(data);
-    res.json({ data: scssCode });
+    const helper = new Helper(data);
+
+    res.json({ data: { isValid: helper.isValid(), data: helper.getInput() } });
   } catch (error) {
     res
       .status(500)
-      .json({ message: "Conversion failed", error: (error as Error).message });
+      .json({ message: 'Conversion failed', error: (error as Error).message });
   }
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://0.0.0.0:${PORT}`);
+  console.info(`Server running on http://0.0.0.0:${PORT}`);
 });

@@ -2,19 +2,16 @@
   "name": "server",
   "version": "1.0.0",
   "description": "Welcome to the **SCSS to CSS Converter - Server**! This project is a lightweight, user-friendly tool designed to make converting SCSS (Sassy CSS) code to CSS (Cascading Style Sheets) simple and accessible. With this converter, you can work with SCSS syntax and quickly generate the final CSS code for easy deployment and browser compatibility.",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
+  "author": "dhunanyan",
   "scripts": {
+    "lint": "eslint . --fix",
     "build:converter": "bash scripts/converter_build.sh",
     "build:server": "tsc",
     "build": "bash scripts/converter_build.sh && tsc",
-    "serve": "nodemon src/server.ts",
-    "start": "ts-node src/server.ts"
+    "serve": "nodemon server.ts",
+    "start": "ts-node server.ts",
+    "prepare": "husky"
   },
-  "author": "dhunanyan",
-  "license": "ISC",
   "dependencies": {
     "antlr4": "^4.13.2",
     "cors": "^2.8.5",
@@ -23,7 +20,16 @@
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.13.0",
+    "@typescript-eslint/parser": "^8.13.0",
+    "eslint": "^8.50.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-typescript": "^3.6.3",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "husky": "^9.1.6",
     "nodemon": "^3.1.7",
+    "prettier": "^3.3.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3"
   }
