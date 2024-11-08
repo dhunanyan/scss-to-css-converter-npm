@@ -4,11 +4,10 @@ import SCSSLexer from '@parser/SCSSLexer';
 
 import { Visitor } from './Visitor';
 import { ErrorListener } from './ErrorListener';
-
 import { IMain } from '@models';
 
 export class Main implements IMain {
-  private input: string;
+  input: string;
 
   constructor(input: string) {
     this.input = input;

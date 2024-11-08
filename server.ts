@@ -12,22 +12,16 @@ dotenv.config();
 
 const app = express();
 
-const corsOptions = {
-  origin: 'https://scss-to-css-converter.netlify.app',
-  methods: 'GET,POST,PUT,DELETE',
-  allowedHeaders: 'Content-Type,Authorization',
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
-
 app.use(express.static(path.join(__dirname, 'public')));
-app.get('/', (req, res) => {
+
+app.get('/', (_: Request, res: Response) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 app.get('/healthcheck', healthcheck());
 
-app.post('/api/convert', (req: Request, res: Response) => {
+app.get('/convert', (req: Request, res: Response) => {
   try {
     const { data } = req.body;
     const helper = new Main(data);
@@ -44,3 +38,5 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.info(`Listening on port ${port}...`);
 });
+
+export default app;
