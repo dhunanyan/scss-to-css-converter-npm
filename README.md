@@ -60,7 +60,7 @@ However if you are interested in building the compiler on your local machine you
 
 > ```bash
 > cd scss-to-css-converter
-> sh scripts/converter_build.sh
+> sh scripts/build_converter.sh
 > ```
 >
 > **🚨 `parser/` folder in project root will be deleted and will be replaced with the new generated one**

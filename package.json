@@ -8,9 +8,8 @@
   },
   "scripts": {
     "lint": "eslint ./*.ts --fix",
-    "build:converter": "bash scripts/converter_build.sh",
-    "build:server": "tsc",
-    "build": "bash scripts/converter_build.sh && tsc",
+    "build:converter": "bash scripts/build_converter.sh",
+    "build:server": "bash scripts/build_server.sh",
     "serve": "nodemon server.ts",
     "start:dev": "ENV=development nodemon server.ts",
     "start:server": "ENV=production node dist/server.js",
