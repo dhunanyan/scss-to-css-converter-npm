@@ -1,0 +1,15 @@
+TODO: after pushing to array by checking for '}' symbol in visitBlock - ensure that all other declarationProperties (which can be defined after the bracket symbol) are also included.
+
+```ts
+convertToCSS = (): CSSType => {
+  const result: { [key: string]: string[] } = {};
+  this.declarationList.forEach((declaration, i) => {
+    const selector = `${this.selectorList.reverse()[i].join(' ').replace(' &.', '.')}`;
+    result[selector] = [
+      ...(result[selector] ? result[selector] : []),
+      ...declaration,
+    ];
+  });
+  return result;
+};
+```
