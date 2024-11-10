@@ -21,12 +21,12 @@ app.get('/', (_: Request, res: Response) => {
 });
 app.get('/healthcheck', healthcheck());
 
-app.get('/convert', (req: Request, res: Response) => {
+app.post('/convert', (req: Request, res: Response) => {
   try {
     const { data } = req.body;
-    const helper = new Main(data);
+    const main = new Main(data);
 
-    res.json({ data: { isValid: helper.isValid(), data: helper.getInput() } });
+    res.json({ data: { isValid: main.isValid(), data: main.getOutput() } });
   } catch (error) {
     res
       .status(500)
