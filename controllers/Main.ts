@@ -1,10 +1,10 @@
 import { CommonTokenStream, CharStreams } from 'antlr4';
-import SCSSParser from '@parser/SCSSParser';
-import SCSSLexer from '@parser/SCSSLexer';
+import SCSSParser from '../parser/SCSSParser';
+import SCSSLexer from '../parser/SCSSLexer';
 
 import { type CSSType, Visitor } from './Visitor';
 import { ErrorListener } from './ErrorListener';
-import { IMain } from '@models';
+import { IMain } from '../models';
 
 export class Main implements IMain {
   private input: string;

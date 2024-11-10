@@ -7,8 +7,8 @@ import {
   PropertyValueContext,
   ListSpaceSeparatedContext,
   ListElementContext,
-} from '@parser/SCSSParser';
-import SCSSParserVisitor from '@parser/SCSSParserVisitor';
+} from '../parser/SCSSParser';
+import SCSSParserVisitor from '../parser/SCSSParserVisitor';
 
 export type DeclarationType = string;
 export type DeclarationStackType = DeclarationType[];

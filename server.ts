@@ -4,9 +4,9 @@ import express, { Request, Response } from 'express';
 import path from 'path';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import { healthcheck } from '@routes';
+import { healthcheck } from './routes';
 
-import { Main } from '@controllers';
+import { Main } from './controllers';
 
 dotenv.config();
 
