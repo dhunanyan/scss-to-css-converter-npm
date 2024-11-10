@@ -189,6 +189,13 @@ Run in project root:
 yarn build:server
 ```
 
+## 🎬 Run production build locally
+
+```bash
+yarn build:server
+yarn start:server
+```
+
 ## 💬 Feedback
 
 We'd love to hear how you're using the SCSS to CSS Converter - Server! Feel free to contribute or open issues if you have ideas to improve it.
