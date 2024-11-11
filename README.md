@@ -8,6 +8,12 @@ Welcome to the **SCSS to CSS Converter - Server**! This project is a lightweight
 
 CSS preprocessors like SCSS allow for more flexible, modular, and maintainable styling by providing features such as variables, nested rules, and mixins. However, the final output for browsers needs to be in plain CSS. This converter bridges that gap, helping you transition smoothly from SCSS to CSS.
 
+> [!IMPORTANT] Useful links
+> |Role|Link|
+> |-|-|
+> |Client App|https://scss-to-css-converter.netlify.app|
+> |Client Repository|https://github.com/dhunanyan/scss-to-css-converter-client|
+
 ## ✨ Features
 
 - **Simple and intuitive**: Minimal setup required to convert SCSS files to CSS.
@@ -41,14 +47,14 @@ git clone https://github.com/dhunanyan/scss-to-css-converter-server.git
 Since some of you may not have `antlr4` on your local machine in order to build the scss compiler - the `parser/` folder has been removed from `.gitignore`, so you can find it on `master`.
 However if you are interested in building the compiler on your local machine you should install `antlr4` on your local machine.
 
-#### - Install `ANTLR4` (Window)
-
+> [!NOTE]Install ANTLR4 (Window)
+>
 > - Go to [ANTLR4 Official Website](https://www.antlr.org)
 > - Go to [Downloads](https://www.antlr.org/download.html)
 > - Find the latest version, which satisfies the project requirements and download it and configure on your local machine
 
-#### - Install `ANTLR4` (MacOS)
-
+> [!NOTE]Install ANTLR4 (MacOS)
+>
 > ```bash
 > brew install antlr
 > $ antlr4
@@ -56,21 +62,22 @@ However if you are interested in building the compiler on your local machine you
 > # ...
 > ```
 
-#### - Build SCSS Compiler
-
+> [!NOTE]Build SCSS Compiler
+>
 > ```bash
 > cd scss-to-css-converter
 > sh scripts/build_converter.sh
 > ```
+
+> [!CAUTION] Attention
 >
-> **🚨 `parser/` folder in project root will be deleted and will be replaced with the new generated one**
+> **`parser/` folder in project root will be deleted and will be replaced with the new generated one**
 
 ### 2. Install `NodeJS v20+`
 
 In order to install and run the project you should have `Node.js 20` on your local machine
 
-#### - Install `NodeJS v20+` (Windows)
-
+> [!NOTE]Install `NodeJS v20+` (Windows)
 > If you have `nvm` you can simply switch to a different version by running:
 >
 > ```bash
@@ -80,8 +87,8 @@ In order to install and run the project you should have `Node.js 20` on your loc
 >
 > if not then quickest way to download it from [here](https://nodejs.org/en/download/prebuilt-installer/current)
 
-#### - Install `NodeJS v20+` (MacOS)
-
+> [!NOTE]Install `NodeJS v20+` (MacOS)
+>
 > ```bash
 > brew install nvm
 > nvm install 20
@@ -114,72 +121,71 @@ Project will be running on `https://localhost:3000`
 | `/healthcheck` | Simple healthcheck route which returns the version of server                                             |
 | `/convert`     | The main route were all the magic happens. Here you send API requests. Please see a sample request below |
 
-#### Example of an API request:
+> [!TIP]Example of an API request:
+> You can call this inside browser console:
+>
+> ```js
+> // API Request function
+> const convert = async (data) => {
+>   try {
+>     const res = await fetch('http://localhost:3000/convert', {
+>       method: 'POST',
+>       headers: { 'Content-Type': 'application/json' },
+>       body: JSON.stringify({ data }),
+>     });
+>     const json = await res.json();
+>     return json.data;
+>   } catch (error) {
+>     console.error('Error:', error);
+>     return null;
+>   }
+> };
+>
+> // Sample SCSS Code
+> const scssCode = `
+> body {
+>    background-color: red;
+>    font-size: 14px;
+>    color: yellow;
+>    font-size: 14px;
+>    line-height: 24px;
+> 
+>    ul {
+>        color: green;
+> 
+>        &.card {
+>            width: 10px;
+> 
+>            &--dark{
+>                &:first-of-type {
+>                    border-radius: 20px;
+>                }
+>                border: 1px solid #000;
+>            }
+>        }
+> 
+>        height: 20px;
+>    }
+> 
+>    text-transform: underline;
+> }`;
+>
+> // Calling the the function with SCSS Code param
+> (await convert(scssCode))['data'];
+> ```
 
-🔔 You can call this inside browser console:
-
-```js
-// API Request function
-const convert = async (data) => {
-  try {
-    const res = await fetch('http://localhost:3000/convert', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ data }),
-    });
-    const json = await res.json();
-    return json.data;
-  } catch (error) {
-    console.error('Error:', error);
-    return null;
-  }
-};
-
-// Sample SCSS Code
-const scssCode = `
-body {
-    background-color: red;
-    font-size: 14px;
-    color: yellow;
-    font-size: 14px;
-    line-height: 24px;
-
-    ul {
-        color: green;
-
-        &.card {
-            width: 10px;
-
-            &--dark{
-                &:first-of-type {
-                    border-radius: 20px;
-                }
-                border: 1px solid #000;
-            }
-        }
-
-        height: 20px;
-    }
-
-    text-transform: underline;
-}`;
-
-// Calling the the function with SCSS Code param
-(await convert(scssCode))['data'];
-```
-
-#### Example of an API response
-
-🔔 `isValid` - tells wether the SCSS code (which was the param for the request) is valid or not
-
-🔔 `data` - CSS code (converted from SCSS)
-
-```json
-{
-  "isValid": true,
-  "data": "body {\n\tbackground-color: red;\n\tfont-size: 14px;\n\tcolor: yellow;\n\tfont-size: 14px;\n\tline-height: 24px;\n\ttext-transform: underline;\n}\n\nbody ul {\n\tcolor: green;\n\theight: 20px;\n}\n\nbody ul.card {\n\twidth: 10px;\n}\n\nbody ul.card--dark {\n\tborder: 1px solid #000;\n}\n\nbody ul.card--dark:first-of-type {\n\tborder-radius: 20px;\n}"
-}
-```
+> [!TIP]Example of an API response
+>
+> `isValid` - tells wether the SCSS code (which was the param for the request) is valid or not
+>
+> `data` - CSS code (converted from SCSS)
+>
+> ```json
+> {
+>   "isValid": true,
+>   "data": "body {\n\tbackground-color: red;\n\tfont-size: 14px;\n\tcolor: yellow;\n\tfont-size: 14px;\n\tline-height: 24px;\n\ttext-transform: underline;\n}\n\nbody ul {\n\tcolor: green;\n\theight: 20px;\n}\n\nbody ul.card {\n\twidth: 10px;\n}\n\nbody ul.card--dark {\n\tborder: 1px solid #000;\n}\n\nbody ul.card--dark:first-of-type {\n\tborder-radius: 20px;\n}"
+> }
+> ```
 
 ## 🛠️ Build
 
