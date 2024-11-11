@@ -1,4 +1,3 @@
-import "tsconfig-paths/register";
 import { Converter } from "./controllers";
 
 export type ConvertReturnType = {

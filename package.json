@@ -37,35 +37,26 @@
     "dist"
   ],
   "main": "dist/index.js",
-  "version": "3.1.0",
+  "version": "3.3.0",
   "engines": {
     "node": ">=20"
   },
   "scripts": {
     "lint": "eslint ./*.ts --fix",
     "build:converter": "bash scripts/build_converter.sh",
-    "build:package": "tsc",
+    "build:package": "tsc --jsx react --target es6 --lib es2021,dom",
     "publish": "npm publish --access=public",
     "prepare": "husky"
   },
   "dependencies": {
-    "antlr4": "^4.13.2",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "express": "^4.21.1",
-    "tsconfig-paths": "^4.2.0"
+    "antlr4": "^4.13.2"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.17",
-    "@types/express": "^5.0.0",
     "@typescript-eslint/eslint-plugin": "^8.13.0",
     "@typescript-eslint/parser": "^8.13.0",
     "eslint": "^8.50.0",
-    "eslint-import-resolver-typescript": "^3.6.3",
     "eslint-plugin-import": "^2.31.0",
     "husky": "^9.1.6",
-    "nodemon": "^3.1.7",
-    "ts-node": "^10.9.2",
     "typescript": "^5.6.3"
   }
 }
