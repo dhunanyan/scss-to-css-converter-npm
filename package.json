@@ -1,17 +1,48 @@
 {
-  "name": "scss-to-css-converter-server",
+  "name": "@dhunanyan/scss-to-css-converter",
   "author": "dhunanyan",
-  "description": "Welcome to the **SCSS to CSS Converter - Server**! This project is a lightweight, user-friendly tool designed to make converting SCSS (Sassy CSS) code to CSS (Cascading Style Sheets) simple and accessible. With this converter, you can work with SCSS syntax and quickly generate the final CSS code for easy deployment and browser compatibility.",
-  "version": "2.0.0",
+  "license": "MIT",
+  "description": "This project is a tool designed to make converting SCSS (Sassy CSS) code to CSS (Cascading Style Sheets) simple and accessible. With this converter, you can work with SCSS syntax and quickly generate the final CSS code for easy deployment and browser compatibility.",
+  "keywords": [
+    "scss",
+    "css",
+    "scss-to-css",
+    "sass",
+    "scss compiler",
+    "css compiler",
+    "scss converter",
+    "css converter",
+    "preprocessor",
+    "css preprocessor",
+    "sass compiler",
+    "css processor",
+    "frontend",
+    "stylesheets",
+    "web development",
+    "css transformation",
+    "style converter",
+    "scss processor",
+    "node-sass",
+    "postcss"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dhunanyan/scss-to-css-converter-npm-package.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dhunanyan/scss-to-css-converter-npm-package/issues"
+  },
+  "homepage": "https://github.com/dhunanyan/scss-to-css-converter-npm-package#readme",
+  "main": "dist/index.js",
+  "version": "3.0.1",
   "engines": {
     "node": ">=20"
   },
   "scripts": {
     "lint": "eslint ./*.ts --fix",
     "build:converter": "bash scripts/build_converter.sh",
-    "build:server": "bash scripts/build_server.sh",
-    "start:dev": "ENV=development nodemon server.ts",
-    "start:server": "ENV=production node dist/server.js",
+    "build:package": "tsc",
+    "publish": "npm publish --access=public",
     "prepare": "husky"
   },
   "dependencies": {
@@ -27,13 +58,10 @@
     "@typescript-eslint/eslint-plugin": "^8.13.0",
     "@typescript-eslint/parser": "^8.13.0",
     "eslint": "^8.50.0",
-    "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.6.3",
     "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-prettier": "^5.2.1",
     "husky": "^9.1.6",
     "nodemon": "^3.1.7",
-    "prettier": "^3.3.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3"
   }

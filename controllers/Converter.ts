@@ -1,12 +1,12 @@
-import { CommonTokenStream, CharStreams } from 'antlr4';
-import SCSSParser from '../parser/SCSSParser';
-import SCSSLexer from '../parser/SCSSLexer';
+import { CommonTokenStream, CharStreams } from "antlr4";
+import SCSSParser from "../parser/SCSSParser";
+import SCSSLexer from "../parser/SCSSLexer";
 
-import { type CSSType, Visitor } from './Visitor';
-import { ErrorListener } from './ErrorListener';
-import { IMain } from '../models';
+import { type CSSType, Visitor } from "./Visitor";
+import { ErrorListener } from "./ErrorListener";
+import { IConverter } from "../models";
 
-export class Main implements IMain {
+export class Converter implements IConverter {
   private input: string;
   private output: CSSType;
   private errorListener: ErrorListener;
@@ -30,7 +30,7 @@ export class Main implements IMain {
     const visitor = new Visitor();
     visitor.visit(tree);
 
-    this.output = visitor.getOutput();
+    this.output = visitor.getCSS();
   }
 
   public getInput(): string {
@@ -51,7 +51,7 @@ export class Main implements IMain {
         this.errorListener.getErrors() &&
         this.errorListener.getErrors().length > 0
       ) {
-        console.error('Parsing Errors:', this.errorListener.getErrors());
+        console.error("Parsing Errors:", this.errorListener.getErrors());
         return false;
       }
 
