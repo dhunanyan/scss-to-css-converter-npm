@@ -1,1 +1,5 @@
-export { IMain } from './IMain';
+export interface IConverter {
+  setInput(input: string): void;
+  getInput(): string;
+  isValid(): boolean;
+}

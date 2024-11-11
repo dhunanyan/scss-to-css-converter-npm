@@ -5,33 +5,31 @@ module.exports = {
     jest: true,
   },
   extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
-    'plugin:import/errors',
-    'plugin:import/warnings',
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
   ],
-  parser: '@typescript-eslint/parser',
+  parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: 2021,
-    sourceType: 'module',
+    sourceType: "module",
   },
-  plugins: ['@typescript-eslint', 'prettier', 'import'],
+  plugins: ["@typescript-eslint", "import"],
   settings: {
-    'import/resolver': {
+    "import/resolver": {
       typescript: {
-        project: './tsconfig.json',
+        project: "./tsconfig.json",
       },
     },
   },
   overrides: [
     {
-      files: ['**/*.ts'],
+      files: ["**/*.ts"],
       rules: {
-        'no-console': ['warn', { allow: ['info', 'error'] }],
-        '@typescript-eslint/no-unused-vars': 'error',
-        'import/no-unresolved': 'error',
-        'prettier/prettier': 'error',
+        "no-console": ["warn", { allow: ["info", "error"] }],
+        "@typescript-eslint/no-unused-vars": "error",
+        "import/no-unresolved": "error",
       },
     },
   ],

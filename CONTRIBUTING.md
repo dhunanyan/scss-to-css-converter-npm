@@ -1,6 +1,6 @@
-# Contributing to SCSS to CSS Converter - Server
+# Contributing to SCSS to CSS Converter NPM Package
 
-Thank you for your interest in contributing to the SCSS to CSS Converter - Server project! We welcome contributions that improve the project, from fixing bugs to adding new features. Please read through this guide to understand how you can contribute effectively.
+Thank you for your interest in contributing to the SCSS to CSS Converter NPM Package project! We welcome contributions that improve the project, from fixing bugs to adding new features. Please read through this guide to understand how you can contribute effectively.
 
 ## Getting Started
 
@@ -98,7 +98,7 @@ If you need help with your contributions, feel free to open a discussion or cont
 
 ## Thank You!
 
-Thank you for contributing to the SCSS to CSS Converter - Server project! Your involvement helps make this project better for everyone.
+Thank you for contributing to the SCSS to CSS Converter NPM Package project! Your involvement helps make this project better for everyone.
 
 ---
 

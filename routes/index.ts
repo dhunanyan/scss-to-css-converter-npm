@@ -1,1 +1,0 @@
-export { healthcheck } from './healthcheck';

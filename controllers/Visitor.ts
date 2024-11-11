@@ -7,8 +7,8 @@ import {
   PropertyValueContext,
   ListSpaceSeparatedContext,
   ListElementContext,
-} from '../parser/SCSSParser';
-import SCSSParserVisitor from '../parser/SCSSParserVisitor';
+} from "../parser/SCSSParser";
+import SCSSParserVisitor from "../parser/SCSSParserVisitor";
 
 export type DeclarationType = string;
 export type DeclarationStackType = DeclarationType[];
@@ -33,17 +33,13 @@ export class Visitor extends SCSSParserVisitor<void> {
     const selectorGroupCtx: SelectorGroupContext = ctx.selectorGroup();
     const blockCtx: BlockContext = ctx.block();
 
-    // creates flat selector for current block (starts pushing into an empty array)
     this.selectorStack.push(`${selectorGroupCtx.getText()}`);
 
     this.visit(blockCtx);
 
     this.selectorList.push([...this.selectorStack]);
-
-    // removes flat selector for current block (in order to apply to array the new one later)
     this.selectorStack.pop();
   };
-
   visitListSpaceSeparated = (ctx: ListSpaceSeparatedContext): void => {
     ctx.children?.forEach((c) => {
       this.visit(c);
@@ -55,7 +51,6 @@ export class Visitor extends SCSSParserVisitor<void> {
       }
     });
   };
-
   visitPropertyDeclaration = (ctx: PropertyDeclarationContext): void => {
     const propertyDeclaration = ctx.children?.map((c) => {
       if (c instanceof PropertyValueContext) {
@@ -64,24 +59,23 @@ export class Visitor extends SCSSParserVisitor<void> {
             if (propertyValueCtx instanceof ListSpaceSeparatedContext) {
               this.spaceSeparatedValueStack = [];
               this.visit(propertyValueCtx);
-              return this.spaceSeparatedValueStack.join(' ');
+              return this.spaceSeparatedValueStack.join(" ");
             }
 
             return propertyValueCtx.getText();
           })
-          ?.join(' ');
+          ?.join(" ");
       }
 
       if (c === ctx.Colon()) {
-        return c.getText() + ' ';
+        return c.getText() + " ";
       }
 
       return c.getText();
     });
 
-    this.declarationStack.push(`${propertyDeclaration?.join('')}`);
+    this.declarationStack.push(`${propertyDeclaration?.join("")}`);
   };
-
   visitBlock = (ctx: BlockContext): void => {
     const statements = ctx.children?.filter(
       (c) => c instanceof StatementContext
@@ -113,26 +107,14 @@ export class Visitor extends SCSSParserVisitor<void> {
     );
   };
 
-  convertToCSS = (): CSSType => {
-    this.selectorList.reverse();
-
-    return this.declarationList
+  parseCSS = (): CSSType =>
+    this.declarationList
       .map((declaration, i) =>
         declaration.length
-          ? this.selectorList[i].join(' ').replaceAll(' &', '') +
-            ' ' +
-            '{' +
-            '\n' +
-            '\t' +
-            declaration.join('\n\t') +
-            '\n' +
-            '}'
-          : ''
+          ? `${this.selectorList.reverse()[i].join(" ").replaceAll(" &", "")} {\n\t${declaration.join("\n\t")}\n}`
+          : ""
       )
-      .join('\n\n');
-  };
+      .join("\n\n");
 
-  getOutput = (): CSSType => {
-    return this.convertToCSS();
-  };
+  getCSS = (): CSSType => this.parseCSS();
 }

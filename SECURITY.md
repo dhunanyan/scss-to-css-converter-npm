@@ -1,6 +1,6 @@
 # Security Policy
 
-Thank you for helping keep our SCSS to CSS Converter - Server project secure! We appreciate contributions and reports from the community. This document provides guidelines for reporting security issues to ensure they are resolved responsibly and promptly.
+Thank you for helping keep our SCSS to CSS Converter NPM Package project secure! We appreciate contributions and reports from the community. This document provides guidelines for reporting security issues to ensure they are resolved responsibly and promptly.
 
 ## Supported Versions
 
@@ -26,7 +26,7 @@ If you find a security vulnerability, please report it by following these steps:
      - Steps to reproduce
      - Potential impact
      - Any recommended fix (if you have one)
-   - **Affected version(s)**: Specify the affected version(s) of the SCSS to CSS Converter - Server.
+   - **Affected version(s)**: Specify the affected version(s) of the SCSS to CSS Converter NPM Package.
 
 We will respond within **48 hours** and provide an initial assessment of the vulnerability. We’ll work with you on remediation and coordinate a public disclosure timeline if appropriate.
 
@@ -39,7 +39,7 @@ We regularly review and address security issues and release updates as needed. S
 
 ## Best Practices for Users
 
-To keep your usage of the SCSS to CSS Converter - Server project secure:
+To keep your usage of the SCSS to CSS Converter NPM Package project secure:
 
 - Always use the latest release.
 - Review our recommended [configuration and deployment practices](https://github.com/your-repo/docs/deployment).
