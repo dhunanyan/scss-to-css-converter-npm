@@ -8,12 +8,15 @@ Welcome to the **SCSS to CSS Converter NPM Package**! This project is an NPM pac
 
 CSS preprocessors like SCSS allow for more flexible, modular, and maintainable styling by providing features such as variables, nested rules, and mixins. However, the final output for browsers needs to be in plain CSS. This converter bridges that gap, helping you transition smoothly from SCSS to CSS.
 
-> [!IMPORTANT] Useful links
-> |Role|Link|
-> |-|-|
-> |NPM Package Repository|https://github.com/dhunanyan/scss-to-css-converter-npm-package|
-> |Client Repository|https://github.com/dhunanyan/scss-to-css-converter|
-> |Client App|https://scss-to-css-converter.netlify.app|
+> [!IMPORTANT]
+>
+> ### Useful links
+>
+> | Role                   | Link                                                           |
+> | ---------------------- | -------------------------------------------------------------- |
+> | NPM Package Repository | https://github.com/dhunanyan/scss-to-css-converter-npm-package |
+> | Client Repository      | https://github.com/dhunanyan/scss-to-css-converter             |
+> | Client App             | https://scss-to-css-converter.netlify.app                      |
 
 ## ✨ Features
 
@@ -24,7 +27,7 @@ CSS preprocessors like SCSS allow for more flexible, modular, and maintainable s
 ## 🚀 Getting Started
 
 ```bash
-# Yarn
+# yarn
 yarn add @dhunanyan/scss-to-css-converter@latest
 ```
 
@@ -33,7 +36,9 @@ yarn add @dhunanyan/scss-to-css-converter@latest
 npm install @dhunanyan/scss-to-css-converter@latest
 ```
 
-> [!TIP]Usage:
+> [!TIP]
+>
+> ### Usage:
 >
 > ```js
 > import { convert } from "@dhunanyan/scss-to-css-converter";
@@ -71,7 +76,9 @@ npm install @dhunanyan/scss-to-css-converter@latest
 > convert(scssCode).CSS;
 > ```
 
-> [!TIP]Returned data type
+> [!TIP]
+>
+> ### Returned data type
 >
 > `isValid` - tells wether the SCSS code (which was the param for the request) is valid or not
 >
@@ -109,13 +116,17 @@ git clone https://github.com/dhunanyan/scss-to-css-converter-npm-package.git
 Since some of you may not have `antlr4` on your local machine in order to build the scss compiler - the `parser/` folder has been removed from `.gitignore`, so you can find it on `master`.
 However if you are interested in building the compiler on your local machine you should install `antlr4` on your local machine.
 
-> [!NOTE]Install ANTLR4 (Window)
+> [!NOTE]
+>
+> ### Install ANTLR4 (Window)
 >
 > - Go to [ANTLR4 Official Website](https://www.antlr.org)
 > - Go to [Downloads](https://www.antlr.org/download.html)
 > - Find the latest version, which satisfies the project requirements and download it and configure on your local machine
 
-> [!NOTE]Install ANTLR4 (MacOS)
+> [!NOTE]
+>
+> ### Install ANTLR4 (MacOS)
 >
 > ```bash
 > brew install antlr
@@ -124,14 +135,16 @@ However if you are interested in building the compiler on your local machine you
 > # ...
 > ```
 
-> [!NOTE]Build SCSS Compiler
+> [!NOTE]
+>
+> ### Build SCSS Compiler
 >
 > ```bash
 > cd scss-to-css-converter
 > sh scripts/build_converter.sh
 > ```
 
-> [!CAUTION] Attention
+> [!CAUTION]
 >
 > **`parser/` folder in project root will be deleted and will be replaced with the new generated one**
 
@@ -139,7 +152,10 @@ However if you are interested in building the compiler on your local machine you
 
 In order to install and run the project you should have `Node.js 20` on your local machine
 
-> [!NOTE]Install `NodeJS v20+` (Windows)
+> [!NOTE]
+>
+> ### Install `NodeJS v20+` (Windows)
+>
 > If you have `nvm` you can simply switch to a different version by running:
 >
 > ```bash
@@ -149,7 +165,9 @@ In order to install and run the project you should have `Node.js 20` on your loc
 >
 > if not then quickest way to download it from [here](https://nodejs.org/en/download/prebuilt-installer/current)
 
-> [!NOTE]Install `NodeJS v20+` (MacOS)
+> [!NOTE]
+>
+> ### Install `NodeJS v20+` (MacOS)
 >
 > ```bash
 > brew install nvm
